@@ -1,0 +1,19 @@
+extends ../../layout/common 
+
+block content
+    h1 Users
+    form(action="/users/search", method="GET")
+        input(type="text", name="q", value = querry)
+        button(class="btn btn-primary ml-2") Search
+    a.btn.btn-primary(href="/users/create", class="mb-2") create
+    table.table
+        tr
+            th Name
+            th Phone
+            th Action
+        each user in users 
+            tr
+                td= user.name
+                td= user.phone
+                td
+                     a.btn.btn-light(href='/users/seemore/'+ user.id ) View

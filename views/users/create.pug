@@ -1,0 +1,21 @@
+extends ../../layout/common 
+
+block content
+    h1 Create
+
+    if errs 
+        each err in errs
+            .alert.alert-danger= err
+
+
+    form(action="/users/create", method="POST",  enctype="multipart/form-data")
+        .form-group
+            label(for="name") Name 
+            input#name.form-control(name="name", type="text", value=data ? data.name : '')
+        .form-group
+            label(for="phone") Phone 
+            input#phone.form-control(name="phone", type="text", value=data ? data.phone : '')
+        .form-group
+            label(for="avatar") Avatar 
+            input#avatar.form-control-file(name="avatar", type='file')
+        button.btn.btn-primary Add

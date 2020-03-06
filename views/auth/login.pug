@@ -1,0 +1,18 @@
+extends ../../layout/common 
+
+block content
+    h1 Login
+
+    if errs 
+        each err in errs
+            .alert.alert-danger= err
+
+
+    form( method="POST")
+        .form-group
+            label(for="email") Email
+            input#email.form-control(name="email", type="text", value=data ? data.email : "")
+            label(for="password") Phone 
+            input#password.form-control(name="password", type="password", value=data ? data.password : "")
+
+        button.btn.btn-primary Login

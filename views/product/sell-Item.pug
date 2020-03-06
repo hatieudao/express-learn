@@ -1,0 +1,38 @@
+extends ../../layout/common
+
+block  content
+
+    h1 PRODUCTS
+    h5.text-justify Total:
+        if total   
+            p= total
+    .d-flex.align-items-center
+        form.ml-auto(action="/product/search", method="GET", class="d-flex")
+            input(type="text", name="q", class="form-control")
+            button.bnt.bnt-primary.ml-2 Search
+    .row
+        each pro in product
+            .col-sm-6.col-md-4.col-lg-3
+                .card.mb-3
+                    img.card-img-top(src=pro.img, alt="img")
+                    .card-body
+                        h5.card-title= pro.name
+                        p.card-text= pro.description
+                        a.btn.btn-primary(href='/cart/add/' + pro.id) Add to cart
+        
+    //- nav(aria-label='Page navigation example')
+    //-     ul.pagination
+    //-         li.page-item
+    //-             a.page-link(href=pageLink[0]) Previous
+    //-         li.page-item
+    //-             a.page-link(href=pageLink[1]) 
+    //-                 span(style="background-color: #DDD;")= num[1]
+    //-         li.page-item
+    //-             a.page-link(href=pageLink[2]) 
+    //-                 span= num[2]
+    //-         li.page-item
+    //-             a.page-link(href=pageLink[3]) 
+    //-                 span= num[3]
+    //-         li.page-item
+    //-             a.page-link(href=pageLink[4]) Next
+
